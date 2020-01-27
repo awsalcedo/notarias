@@ -62,7 +62,7 @@ class MenuLateral extends StatelessWidget {
           _crearDrawerItem(
             icono: Icons.insert_chart,
             titulo: 'Noticias',
-            onTap: (){}
+            onTap: () {}
           ),
           _crearDrawerItem(
             icono: Icons.iso,
