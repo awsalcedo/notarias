@@ -15,33 +15,7 @@ class MenuLateral extends StatelessWidget {
           
           Column(
             children: <Widget>[
-              _crearCabeceraDrawer(),
-              /*
-              DrawerHeader(
-                child: Container(
-                  child: Image.asset(
-                            'assets/imagen_panel.png',
-                            height: 78.0, 
-                            width: 78.0, 
-                          ),
-                    ),
-                  
-              ),
-              */
-              
-            Container(
-              color: Color.fromRGBO(255, 193, 7, 1),
-              child: Text('Directorio Notarial', style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),),
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-            ),
-              
-            Container(
-              color: Color.fromRGBO(255, 193, 7, 1),
-              child: Text('Ubicación a Nivel Nacional', style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),),
-              padding: EdgeInsets.symmetric(vertical: 5.0),
-            ),
-              
-              
+              _crearCabeceraDrawer(),          
             ],
           ),
           _crearDrawerItem(
@@ -81,46 +55,69 @@ class MenuLateral extends StatelessWidget {
 
 Widget _crearCabeceraDrawer () {
   return DrawerHeader(
-    //margin: EdgeInsets.symmetric(horizontal: 28.0, vertical: 28.0),
-    
+    padding: EdgeInsets.zero,    
     decoration: BoxDecoration(
-      image: DecorationImage(
-        fit: BoxFit.scaleDown,
-        image: AssetImage(
-          'assets/imagen_panel.png'
-        ),
-      )
+      gradient: LinearGradient(colors: <Color> [
+        Color.fromRGBO(48, 48, 48, 1),
+        //Color.fromRGBO(54, 54, 54, 1),
+        Colors.white10
+      ])
     ),
-    child: Stack(
-      children: <Widget>[
-        Positioned(
-          bottom: 1.0,
-          left: 50.0,
-          child: Column(
-            children: <Widget>[
-              Text('Directorio Notarial', style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),),
-              Text('Ubicación a Nivel Nacional', style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),),
-            ],
+    child: Container(
+      child: Column(
+        children: <Widget>[
+          Material(
+            borderRadius: BorderRadius.all(Radius.circular(50)),
+            elevation: 10,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Image.asset('assets/imagen_panel.png', width: 80, height: 80,),
+            ),
           ),
-        ),
-        
-      ],
+          Text('Directorio Notarial', style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),),
+          Text('Ubicación a Nivel Nacional', style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),),
+        ],  
+      ),
     ),
   );
 }
 
 Widget _crearDrawerItem ({IconData icono, String titulo, GestureTapCallback onTap}) {
-  return ListTile(
-    title: Row(
-      children: <Widget>[
-        Icon(icono, color: Color.fromRGBO(255, 193, 7, 1)),
-        Padding(
-          padding: EdgeInsets.only(left: 30.0),
-          child: Text(titulo, style: TextStyle(color: Colors.white),),
-        )
-      ],
-    ),
-    onTap: onTap,
+  return Padding(
+      padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: Colors.white10))
+        ),
+        child: InkWell(
+          splashColor: Color.fromRGBO(255, 193, 7, 1),
+          onTap: onTap,
+          child: Container(
+            height: 50,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Icon(icono, color: Color.fromRGBO(255, 193, 7, 1)),
+                    Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: Text(titulo, style: TextStyle(color: Colors.white, fontSize: 16),),
+                    ),
+                  ],
+                ),
+                
+                Image.asset(
+                  'assets/boton-ir.png',
+                  width: 20.0,
+                  height: 20.0,
+                  
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
   );
 }
 
