@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notarias/src/pages/enlaces_page.dart';
 import 'package:notarias/src/pages/home_page.dart';
+import 'package:notarias/src/pages/mision_page.dart';
 
 class MenuLateral extends StatelessWidget {
   //const MenuLateral({Kegy key}) : super(key: key);
@@ -43,35 +44,35 @@ class MenuLateral extends StatelessWidget {
               
             ],
           ),
-          ListTile(
-            leading: Icon(Icons.home, color: Color.fromRGBO(255, 193, 7, 1)),
-            title: Text('Notarias', style: TextStyle(color: Colors.white,)),
-            onTap: () => Navigator.pushReplacementNamed(context, HomePage.routeName),
+          _crearDrawerItem(
+            icono: Icons.home, 
+            titulo: 'Notarias',
+            onTap: () => Navigator.pushReplacementNamed(context, HomePage.routeName)
           ),
-          ListTile(
-            leading: Icon(Icons.important_devices, color: Color.fromRGBO(255, 193, 7, 1)),
-            title: Text('Misión', style: TextStyle(color: Colors.white),),
-            onTap: (){},
+          _crearDrawerItem(
+            icono: Icons.important_devices,
+            titulo: 'Misión',
+            onTap: () => Navigator.pushReplacementNamed(context, MisionPage.routeName)
           ),
-          ListTile(
-            leading: Icon(Icons.info, color: Color.fromRGBO(255, 193, 7, 1)),
-            title: Text('Visión', style: TextStyle(color: Colors.white),),
-            onTap: (){},
+          _crearDrawerItem(
+            icono: Icons.info,
+            titulo: 'Visión',
+            onTap: () {}
+          ),  
+          _crearDrawerItem(
+            icono: Icons.insert_chart,
+            titulo: 'Noticias',
+            onTap: (){}
           ),
-          ListTile(
-            leading: Icon(Icons.insert_chart, color: Color.fromRGBO(255, 193, 7, 1)),
-            title: Text('Noticias', style: TextStyle(color: Colors.white),),
-            onTap: (){},
+          _crearDrawerItem(
+            icono: Icons.iso,
+            titulo: 'Publicidad',
+            onTap: (){}
           ),
-          ListTile(
-            leading: Icon(Icons.iso, color: Color.fromRGBO(255, 193, 7, 1)),
-            title: Text('Publicidad', style: TextStyle(color: Colors.white),),
-            onTap: (){},
-          ),
-          ListTile(
-            leading: Icon(Icons.laptop, color: Color.fromRGBO(255, 193, 7, 1)),
-            title: Text('Enlaces', style: TextStyle(color: Colors.white)),
-            onTap: () => Navigator.pushReplacementNamed(context, EnlacesPage.routeName),
+          _crearDrawerItem(
+            icono: Icons.laptop,
+            titulo: 'Enlaces',
+            onTap: () => Navigator.pushReplacementNamed(context, EnlacesPage.routeName)
           )
         ],
       ),
@@ -105,6 +106,21 @@ Widget _crearCabeceraDrawer () {
         
       ],
     ),
+  );
+}
+
+Widget _crearDrawerItem ({IconData icono, String titulo, GestureTapCallback onTap}) {
+  return ListTile(
+    title: Row(
+      children: <Widget>[
+        Icon(icono, color: Color.fromRGBO(255, 193, 7, 1)),
+        Padding(
+          padding: EdgeInsets.only(left: 30.0),
+          child: Text(titulo, style: TextStyle(color: Colors.white),),
+        )
+      ],
+    ),
+    onTap: onTap,
   );
 }
 
