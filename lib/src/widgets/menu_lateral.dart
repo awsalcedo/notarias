@@ -67,7 +67,7 @@ class MenuLateral extends StatelessWidget {
           _crearDrawerItem(
             icono: Icons.iso,
             titulo: 'Publicidad',
-            onTap: (){}
+            onTap: () {}
           ),
           _crearDrawerItem(
             icono: Icons.laptop,
