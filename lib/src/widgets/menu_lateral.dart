@@ -12,12 +12,13 @@ class MenuLateral extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          
-          Column(
+          _crearCabeceraDrawer(),
+          /*Column(
+            
             children: <Widget>[
               _crearCabeceraDrawer(),          
             ],
-          ),
+          ),*/
           _crearDrawerItem(
             icono: Icons.home, 
             titulo: 'Notarias',
@@ -55,7 +56,7 @@ class MenuLateral extends StatelessWidget {
 
 Widget _crearCabeceraDrawer () {
   return DrawerHeader(
-    padding: EdgeInsets.zero,    
+    padding: EdgeInsets.zero,  
     decoration: BoxDecoration(
       gradient: LinearGradient(colors: <Color> [
         Color.fromRGBO(48, 48, 48, 1),
@@ -74,7 +75,9 @@ Widget _crearCabeceraDrawer () {
               child: Image.asset('assets/imagen_panel.png', width: 80, height: 80,),
             ),
           ),
-          Text('Directorio Notarial', style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),),
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: Text('Directorio Notarial', style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),)),
           Text('Ubicación a Nivel Nacional', style: TextStyle(color: Colors.white, fontSize: 14.0, fontWeight: FontWeight.bold),),
         ],  
       ),
