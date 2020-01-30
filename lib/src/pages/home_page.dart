@@ -10,9 +10,43 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text(
+          'NOTARIAS POR PROVINCIA',
+          style: TextStyle(color: Colors.white, fontSize: 19.0),
+        ),
+        backgroundColor: Color.fromRGBO(59, 59, 59, 1),
+        iconTheme: IconThemeData(color: Color.fromRGBO(255, 193, 7, 1)),
+        actions: <Widget>[
+          IconButton(
+            padding: EdgeInsets.all(4.0),
+            icon: Icon(Icons.search, color: Color.fromRGBO(255, 193, 7, 1),),
+            onPressed: (){},
+          ),
+          IconButton(
+            padding: EdgeInsets.all(4.0),
+            icon: Icon(Icons.navigation, color: Color.fromRGBO(255, 193, 7, 1),),
+            onPressed: (){},
+          )
+        ],
       ),
       drawer: MenuLateral(),
+      body: _crearFormulario(),
+    );
+  }
+
+  Widget _crearFormulario() {
+    return Center(
+          child: Form(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(16.0),
+                  //child: ,
+                ),
+              ],
+            ),
+      ),
     );
   }
 
