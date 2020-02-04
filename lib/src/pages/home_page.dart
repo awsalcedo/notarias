@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notarias/src/providers/notarias_provider.dart';
 import 'package:notarias/src/widgets/card_swiper_widget.dart';
 import 'package:notarias/src/widgets/menu_lateral.dart';
 
@@ -53,6 +54,10 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _crearSwiper() {
+
+    final notariasProvider = new NotariasProvider();
+    notariasProvider.getNotarias();
+
     return CardSwiper(
       provincias: [1,2,3,4],
     );
