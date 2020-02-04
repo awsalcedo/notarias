@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notarias/src/widgets/menu_lateral.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 class HomePage extends StatelessWidget {
   //const HomePage({Key key}) : super//(key: key);
@@ -30,7 +31,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: MenuLateral(),
-      body: _crearFormulario(),
+      body: _crearSwiper(),
     );
   }
 
@@ -42,10 +43,25 @@ class HomePage extends StatelessWidget {
               children: <Widget>[
                 Container(
                   padding: EdgeInsets.all(16.0),
-                  //child: ,
+                  child: _crearSwiper(),
                 ),
               ],
             ),
+      ),
+    );
+  }
+
+  Widget _crearSwiper() {
+    return Container(
+      width: double.infinity,
+      height: 300.0,
+      child: Swiper(
+        itemBuilder: (BuildContext context, int index){
+          return Image.network("http://via.placeholder.com/350x150",fit: BoxFit.fill,); 
+        },
+        itemCount: 3,
+        pagination: new SwiperPagination(alignment: Alignment.center),
+        control: new SwiperControl(),
       ),
     );
   }
