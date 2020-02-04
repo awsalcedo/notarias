@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:notarias/src/widgets/card_swiper_widget.dart';
 import 'package:notarias/src/widgets/menu_lateral.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+
 
 class HomePage extends StatelessWidget {
   //const HomePage({Key key}) : super//(key: key);
@@ -52,17 +53,8 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _crearSwiper() {
-    return Container(
-      width: double.infinity,
-      height: 300.0,
-      child: Swiper(
-        itemBuilder: (BuildContext context, int index){
-          return Image.network("http://via.placeholder.com/350x150",fit: BoxFit.fill,); 
-        },
-        itemCount: 3,
-        pagination: new SwiperPagination(alignment: Alignment.center),
-        control: new SwiperControl(),
-      ),
+    return CardSwiper(
+      provincias: [1,2,3,4],
     );
   }
 
