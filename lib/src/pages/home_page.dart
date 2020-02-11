@@ -8,14 +8,16 @@ class HomePage extends StatelessWidget {
   //const HomePage({Key key}) : super//(key: key);
 
   static final routeName = 'home';
+  final notariasProvider = new NotariasProvider();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         title: Text(
           'NOTARIAS POR PROVINCIA',
-          style: TextStyle(color: Colors.white, fontSize: 19.0),
+          style: TextStyle(color: Colors.white, fontSize: 14.0),
         ),
         backgroundColor: Color.fromRGBO(59, 59, 59, 1),
         iconTheme: IconThemeData(color: Color.fromRGBO(255, 193, 7, 1)),
@@ -33,35 +35,49 @@ class HomePage extends StatelessWidget {
         ],
       ),
       drawer: MenuLateral(),
-      body: _crearSwiper(),
-    );
-  }
-
-  Widget _crearFormulario() {
-    return Center(
-          child: Form(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(16.0),
-                  child: _crearSwiper(),
-                ),
-              ],
-            ),
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            _crearSwiperProvincias(),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _crearSwiper() {
+  
 
-    final notariasProvider = new NotariasProvider();
-    notariasProvider.getNotarias();
+  Widget _crearSwiperProvincias() {
 
-    return CardSwiper(
-      provincias: [1,2,3,4],
+    return FutureBuilder(
+      future: notariasProvider.getNotarias(),
+      builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
+        if(snapshot.hasData){
+          return CardSwiper(
+            provincias: snapshot.data
+          );
+        } else {
+          return Container(
+            height: 150.0,
+            child: Center(child: CircularProgressIndicator())
+          );
+        }
+        
+      },
     );
+
   }
 
+/*
+  Widget _crearListaCantones() {
+    return ListView.builder(
+      itemCount: 1,
+      itemBuilder: (BuildContext context, int index) {
+      return ;
+     },
+    );
+
+  }
+*/
   
 }

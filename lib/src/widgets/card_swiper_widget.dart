@@ -11,27 +11,27 @@ class CardSwiper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
     final _screenSize = MediaQuery.of(context).size;
 
     return Container(
       padding: EdgeInsets.only(top: 10.0),
+      //height: 200.0,
       child: Swiper(
-        layout: SwiperLayout.TINDER,
-        itemWidth: _screenSize.width * 0.7,
-        itemHeight: _screenSize.height * 0.35,
-        itemBuilder: (BuildContext context, int index){
-          return ClipRRect(
-            borderRadius: BorderRadius.circular(15.0),
-            child: Image.network(
-              "http://via.placeholder.com/288x188",
-              fit: BoxFit.cover,
-            ),
-          );
+        itemBuilder: (BuildContext context, int index) {
+        return ClipRRect(
+                  borderRadius: BorderRadius.circular(13.0),
+                  child: FadeInImage(
+                    image: AssetImage('assets/provincias/' + provincias[index].toString() + '.jpg'),
+                    placeholder: AssetImage('assets/provincias/no-image.jpg'),
+                    fit: BoxFit.cover, //la imagen se adapta a todo el ancho y largo del Swiper
+                  ),
+              );
         },
-        itemCount: 24,
-        
-      ),
+        itemCount: provincias.length,
+        itemWidth: _screenSize.width * 0.6,
+        itemHeight: _screenSize.height * 0.3,
+        layout: SwiperLayout.TINDER,
+      )
     );
   }
 }

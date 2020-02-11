@@ -82,6 +82,14 @@ class Notaria {
         "foto": foto,
         "notariosPasivos": notariosPasivos == null ? null : List<dynamic>.from(notariosPasivos.map((x) => x.toJson())),
     };
+
+    obtenerProvincia () {
+      if(provincia == null){
+        return null;
+      } else {
+        return provincia.toString();
+      }
+    }
 }
 
 class NotariosPasivo {

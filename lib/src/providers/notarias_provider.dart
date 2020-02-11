@@ -11,28 +11,39 @@ class NotariasProvider {
   void initNotarias () {
     //Borrar un localstorage antiguo de provincias
 
-    _cargarNotarias();
+    //_cargarNotarias();
   }
 
-  Future<List<Notaria>> getNotarias() async {
+  Future<List<String>> getNotarias() async {
     final url = Uri.https(_url, 'notarias-internet/api/v1.0/mysql/notarias.php');
     final resp = await http.get(url);
 
-    final notaria = notariaFromJson(resp.body); //mapea a la entidad
+    final notarias = notariaFromJson(resp.body); //mapea el string a la entidad
+
+    List<String> provincias = new List<String>();
+
+    notarias.forEach((item) => provincias.add(item.provincia));
+
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('notarias', resp.body);
 
-    
-    print(notaria[1].notariosPasivos[0].nombre);
+    //_obtenerCantonesPorProvincia();
+
+    //print(notarias[1].notariosPasivos[0].nombre);
 
 
-    return [];
+    return provincias.toSet().toList();
   }
 
-  void _cargarNotarias() {
-    //obtener las notarias del sharedPreference
-    
+   _obtenerCantonesPorProvincia( String nombreProvincia) async {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      final notariasString = preferences.getString('notarias');
+      final notarias = notariaFromJson(notariasString);
+
+      //notarias.
+
+      return null;
   }
 
 
